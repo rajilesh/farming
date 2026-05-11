@@ -196,6 +196,81 @@
   .crore-math b{color:#fff}
   .crore-math hr{border:none;border-top:1px dashed #ffd16660;margin:6px 0}
 
+  /* EMPIRE SECTION */
+  .s-empire{
+    background:
+      radial-gradient(circle at 20% 30%,#4a1a6b 0%,transparent 40%),
+      radial-gradient(circle at 80% 70%,#b8860b 0%,transparent 40%),
+      linear-gradient(180deg,#0a0a1a,#1a0a2a 50%,#0a1a2a);
+    color:#fff;position:relative;overflow:hidden
+  }
+  .s-empire::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%,#fff,transparent),
+      radial-gradient(2px 2px at 70% 50%,#ffd166,transparent),
+      radial-gradient(1px 1px at 40% 70%,#fff,transparent),
+      radial-gradient(2px 2px at 90% 20%,#fff,transparent),
+      radial-gradient(1px 1px at 50% 90%,#ffd166,transparent),
+      radial-gradient(2px 2px at 10% 80%,#fff,transparent);
+    background-size:200% 200%;
+    animation:twinkle 8s linear infinite;
+    pointer-events:none;opacity:.6
+  }
+  @keyframes twinkle{0%,100%{opacity:.4}50%{opacity:.9}}
+  .s-empire .s-head{color:#ffd166;text-shadow:0 2px 20px #ffd16660;position:relative}
+  .s-empire .s-sub{color:#d4c4ff;position:relative}
+
+  .empire-tier{
+    background:linear-gradient(135deg,#1a0a2a,#2a1a4a);
+    border:1px solid #ffd16640;border-radius:20px;padding:28px;margin-bottom:24px;
+    position:relative;overflow:hidden;color:#fff8dc;
+    opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.2,.7,.2,1);
+    box-shadow:0 20px 50px #00000060
+  }
+  .empire-tier.in{opacity:1;transform:none}
+  .empire-tier::before{
+    content:"";position:absolute;top:0;left:-100%;width:100%;height:2px;
+    background:linear-gradient(90deg,transparent,#ffd166,transparent);
+    animation:scan 4s linear infinite
+  }
+  @keyframes scan{to{left:100%}}
+  .empire-tier .e-badge{
+    display:inline-block;background:linear-gradient(135deg,#ffd166,#b8860b);
+    color:#1a0a2a;padding:6px 16px;border-radius:20px;font-size:.78rem;
+    font-weight:800;letter-spacing:2px;margin-bottom:10px
+  }
+  .empire-tier h3{color:#ffd166;font-size:1.6rem;margin-bottom:6px}
+  .empire-tier .e-income{font-size:2.6rem;font-weight:900;
+    background:linear-gradient(135deg,#ffd166,#fff,#ffd166);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;margin:10px 0;
+    background-size:200% 200%;animation:shine 3s linear infinite}
+  @keyframes shine{to{background-position:200% 0}}
+  .empire-tier .e-tag{color:#d4c4ff;font-size:.95rem;margin-bottom:14px}
+  .empire-tier .e-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+  .empire-tier .e-grid div{background:#ffffff0a;border:1px solid #ffd16630;border-radius:10px;padding:12px;font-size:.9rem}
+  .empire-tier .e-grid b{color:#ffd166;display:block;margin-bottom:4px;font-size:.85rem}
+  .empire-tier .e-real{margin-top:14px;padding:12px 16px;background:#ffd16615;border-left:3px solid #ffd166;border-radius:8px;font-size:.92rem;color:#fff8dc;font-style:italic}
+
+  .reality-check{
+    background:linear-gradient(135deg,#3a0000,#5a1a1a);
+    border:2px solid #ff6b6b;border-radius:16px;padding:24px;margin:30px 0;
+    color:#ffd4d4;position:relative
+  }
+  .reality-check h3{color:#ff9999;margin-bottom:10px;font-size:1.3rem}
+  .reality-check p{line-height:1.7;font-size:.95rem;margin-bottom:8px}
+  .reality-check b{color:#fff}
+
+  .scale-chart{display:flex;align-items:flex-end;gap:8px;height:320px;margin:30px 0;padding:20px;
+    background:#ffffff08;border-radius:18px;border:1px solid #ffd16630;position:relative}
+  .scale-chart .sbar{flex:1;border-radius:8px 8px 0 0;height:0;position:relative;
+    transition:height 2s cubic-bezier(.2,.7,.2,1)}
+  .scale-chart .sbar span{position:absolute;top:-26px;left:50%;transform:translateX(-50%);
+    font-weight:800;color:#ffd166;font-size:.8rem;white-space:nowrap}
+  .scale-chart .sbar small{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);
+    font-size:.7rem;color:#d4c4ff;white-space:nowrap}
+
   /* BIRDS */
   .bird{position:absolute;width:20px;height:10px;animation:fly 18s linear infinite}
   .bird::before,.bird::after{content:"V";position:absolute;color:#1a2a1f;font-weight:700;font-size:14px}
@@ -499,6 +574,127 @@
   </div>
 </section>
 
+<!-- EMPIRE: 1 Cr - 100 Cr / MONTH -->
+<section class="story s-empire">
+  <h2 class="s-head">🌌 The Empire Plan · ₹1 Cr – ₹100 Cr / MONTH</h2>
+  <p class="s-sub">You asked for it — let's be 100% real about what this scale actually means.</p>
+
+  <div class="reality-check">
+    <h3>⚠️ Brutal Honesty First</h3>
+    <p><b>₹1 Cr/month = ₹12 Cr/year revenue.</b> No farmer on earth has done this from 16 cents of soil. To reach this from your starting point, the <b>"farm" becomes 5% of the business</b>. You will run an <b>agri-food company</b> with factories, dozens of staff, investors, and SKUs sold in thousands of stores.</p>
+    <p><b>₹100 Cr/month = ₹1,200 Cr/year.</b> That's <b>unicorn-startup territory</b>. Companies at this scale: ITC Aashirvaad, Patanjali, Tata Consumer, Licious, Country Delight. They all took 8–15 years, ₹50–500 Cr funding, and 500+ employees.</p>
+    <p>I'll still map the realistic path — but read this twice: <b>going from 16 cents to ₹100 Cr/month is statistically rarer than becoming a Bollywood star</b>. Plan it, but don't bet your peace on it.</p>
+  </div>
+
+  <!-- T7 -->
+  <div class="empire-tier">
+    <span class="e-badge">⭐ TIER 7 · YEAR 8–10</span>
+    <h3>₹1 Crore / MONTH</h3>
+    <div class="e-income">₹12 Cr / year</div>
+    <div class="e-tag">From single farmer → Regional D2C food brand</div>
+
+    <div class="e-grid">
+      <div><b>What changes</b>You stop touching soil daily. You're now Founder & CEO.</div>
+      <div><b>Team size</b>15–25 people · ops, marketing, sales, accounts, content</div>
+      <div><b>Brand</b>5–10 SKUs (cold-pressed oils, ghee, honey, spices, snacks) on Amazon, Flipkart, BigBasket, 100+ stores</div>
+      <div><b>Land model</b>Own 1–2 acres + contract with 200+ small farmers across 3 districts</div>
+      <div><b>Processing unit</b>2,000 sq ft FSSAI-certified factory (₹50L–1Cr setup)</div>
+      <div><b>Marketing engine</b>Performance ads ₹3–5L/month · 200k+ followers · D2C subscribers 10k</div>
+      <div><b>Funding</b>Bootstrap OR raise ₹1–3 Cr seed from angels/agri VCs</div>
+      <div><b>Investment needed</b>₹1.5–3 Cr total (from earnings + small raise)</div>
+    </div>
+    <div class="e-real">📍 Real benchmark: <b>Soulfull</b> (millet snacks), <b>Praakritik</b>, <b>Conscious Food</b>, <b>Pure & Sure</b>, <b>Phalada</b> — all hit ₹1 Cr/month in years 5–8.</div>
+  </div>
+
+  <!-- T8 -->
+  <div class="empire-tier">
+    <span class="e-badge">⭐⭐ TIER 8 · YEAR 10–13</span>
+    <h3>₹10 Crore / MONTH</h3>
+    <div class="e-income">₹120 Cr / year</div>
+    <div class="e-tag">National D2C food brand · "the next Country Delight"</div>
+
+    <div class="e-grid">
+      <div><b>What changes</b>You're now a CEO of a real company. Maybe board, investors.</div>
+      <div><b>Team size</b>80–150 people · multiple departments, COO under you</div>
+      <div><b>Brand</b>30–50 SKUs · ghee, oils, spices, dals, honey, snacks, beverages · pan-India distribution</div>
+      <div><b>Supply chain</b>5,000+ contract farmers across 10+ states · own QC labs · 3 processing plants</div>
+      <div><b>Sales channels</b>Own app · Amazon · Quick commerce (Blinkit/Zepto/Instamart) · 2,000+ retail outlets · airport stores</div>
+      <div><b>Funding</b>Series A/B raised: ₹25–80 Cr from VCs (Fireside, Sixth Sense, etc.)</div>
+      <div><b>Marketing</b>TV/OTT ads · Bollywood/cricket sponsor · celebrity collab</div>
+      <div><b>Investment needed</b>₹30–80 Cr (mostly VC funded)</div>
+    </div>
+    <div class="e-real">📍 Real benchmark: <b>Two Brothers Organic Farms</b> (₹50–80 Cr/yr → headed here), <b>Slurrp Farm</b>, <b>Tata Sampann</b>'s first 3 yrs, <b>Country Delight</b> (₹1,200 Cr revenue today, started milk delivery).</div>
+  </div>
+
+  <!-- T9 -->
+  <div class="empire-tier">
+    <span class="e-badge">⭐⭐⭐ TIER 9 · YEAR 13–18</span>
+    <h3>₹50 Crore / MONTH</h3>
+    <div class="e-income">₹600 Cr / year · Unicorn trajectory</div>
+    <div class="e-tag">FMCG challenger brand · IPO-ready</div>
+
+    <div class="e-grid">
+      <div><b>What changes</b>You compete with ITC, Tata, Adani in select categories</div>
+      <div><b>Team size</b>500–1,000 people · CXO leadership · multiple business heads</div>
+      <div><b>Operations</b>10+ factories · own logistics fleet · cold chain · QC labs</div>
+      <div><b>Reach</b>50,000+ contract farmers · presence in 50,000 retail outlets · exports to 10+ countries</div>
+      <div><b>Diversification</b>Multiple sub-brands · acquire smaller D2C brands · private-label for big retailers</div>
+      <div><b>Funding</b>Series C/D: ₹200–500 Cr raised · valuation ₹2,000–5,000 Cr</div>
+      <div><b>Exit options</b>IPO · acquisition by ITC/Nestle/Tata for ₹2,000–8,000 Cr</div>
+    </div>
+    <div class="e-real">📍 Real benchmark: <b>Patanjali</b> at year 10 · <b>iD Fresh Food</b> (₹400 Cr) · <b>Veeba</b> (₹700 Cr) · <b>Paper Boat</b> (₹400 Cr).</div>
+  </div>
+
+  <!-- T10 -->
+  <div class="empire-tier" style="background:linear-gradient(135deg,#2a0a4a,#4a1a6b 50%,#1a0a2a);border-color:#ffd166">
+    <span class="e-badge" style="background:linear-gradient(135deg,#fff,#ffd166)">👑 TIER 10 · YEAR 18–25</span>
+    <h3>₹100 Crore / MONTH</h3>
+    <div class="e-income">₹1,200 Cr / year · The Indian giant</div>
+    <div class="e-tag">You are now in ITC / Patanjali / Tata Consumer league</div>
+
+    <div class="e-grid">
+      <div><b>What this means</b>Listed company (NSE/BSE) · valuation ₹15,000–40,000 Cr · you're worth ₹500–3,000 Cr personally</div>
+      <div><b>Team size</b>3,000–10,000 employees · 50+ factories · 5 lakh+ farmer network</div>
+      <div><b>Categories</b>Staples + dairy + snacks + beverages + personal care · 200+ SKUs</div>
+      <div><b>Distribution</b>10,00,000+ retail outlets · global exports · Middle East / SE Asia / EU presence</div>
+      <div><b>Influence</b>You influence agri policy · TED talks · meet PM · Forbes lists</div>
+      <div><b>The cost</b>You haven't touched soil in 15 years. Marriages, friendships, health all tested. Your "farm" is a museum piece.</div>
+    </div>
+    <div class="e-real">📍 Real benchmark: <b>Patanjali</b> (₹30,000 Cr revenue) · <b>ITC Aashirvaad</b> (₹8,000 Cr just from atta) · <b>Amul</b> (₹72,000 Cr) · <b>Dabur</b> (₹12,000 Cr). All started small. All took 20+ years. All required obsession at a level most humans can't sustain.</div>
+  </div>
+
+  <h2 class="s-head" style="margin-top:50px">📊 The Logarithmic Climb</h2>
+  <p class="s-sub" style="color:#d4c4ff">Notice: each tier is ~10× the previous. The jumps get exponentially harder, not linearly.</p>
+  <div class="scale-chart" id="scaleChart">
+    <div class="sbar" data-h="2" style="background:linear-gradient(to top,#3fa34d,#7cb342)"><span>₹3L/mo</span><small>Yr 6</small></div>
+    <div class="sbar" data-h="6" style="background:linear-gradient(to top,#7cb342,#b8d96a)"><span>₹8L/mo</span><small>Yr 7</small></div>
+    <div class="sbar" data-h="15" style="background:linear-gradient(to top,#b8860b,#ffd166)"><span>₹1Cr/mo</span><small>Yr 9 · T7</small></div>
+    <div class="sbar" data-h="40" style="background:linear-gradient(to top,#ff9933,#ffd166)"><span>₹10Cr/mo</span><small>Yr 12 · T8</small></div>
+    <div class="sbar" data-h="70" style="background:linear-gradient(to top,#ff6b6b,#ffd166)"><span>₹50Cr/mo</span><small>Yr 16 · T9</small></div>
+    <div class="sbar" data-h="100" style="background:linear-gradient(to top,#9b59b6,#ffd166,#fff)"><span>₹100Cr/mo</span><small>Yr 22 · T10</small></div>
+  </div>
+
+  <h2 class="s-head" style="margin-top:50px">🔑 What's Truly Required to Reach ₹100 Cr/Month</h2>
+  <div class="cards">
+    <div class="card"><h3><span class="emoji">🧠</span> CEO mindset, not farmer mindset</h3><p>By ₹1 Cr/month you stop farming. By ₹100 Cr/month you barely visit factories. It's spreadsheets, board meetings, hiring CXOs.</p></div>
+    <div class="card"><h3><span class="emoji">💸</span> External capital</h3><p>You cannot bootstrap to ₹100 Cr/month. You need ₹200–500 Cr of VC/PE money, which means giving up 40–60% equity.</p></div>
+    <div class="card"><h3><span class="emoji">🎯</span> One obsessive category</h3><p>Patanjali = ayurveda. Amul = milk. ITC Aashirvaad = atta. Pick ONE thing and dominate it nationally first.</p></div>
+    <div class="card"><h3><span class="emoji">⏳</span> 15–25 years minimum</h3><p>No shortcut exists. Even with perfect execution, factories + brand + distribution + trust take 2 decades.</p></div>
+    <div class="card"><h3><span class="emoji">🏗️</span> Vertical integration</h3><p>Own the farm-to-shelf chain: farmers → processing → packaging → distribution → retail → consumer data.</p></div>
+    <div class="card"><h3><span class="emoji">💔</span> Personal cost</h3><p>Most ₹1000+ Cr founders report broken health, divorces, depression. Read this before chasing the dream.</p></div>
+  </div>
+
+  <div class="reality-check" style="margin-top:40px">
+    <h3>🧭 My honest advice to YOU</h3>
+    <p>You're starting with <b>16 cents, hardworking hands, and a dream</b>. That's enough for an amazing life. But please answer this question before chasing crores:</p>
+    <p style="margin-top:12px;font-size:1.05rem;color:#fff"><b>"Do I want money, or do I want freedom?"</b></p>
+    <p>• <b>Freedom + peace:</b> Stop at Tier 4 (₹3–8L/month). Live on the farm. Read books. Watch sunsets. This is what 95% of people who try the crore path eventually regret not doing.</p>
+    <p>• <b>Wealth + impact:</b> Push to Tier 7–8 (₹1–10 Cr/month). You'll employ hundreds, change lives. But your peace is gone.</p>
+    <p>• <b>Legacy + empire:</b> Tier 9–10 (₹50–100 Cr/month). Possible but consumes everything. ~1 in 10,00,000 farmers ever reach it. Be very sure.</p>
+    <p style="margin-top:14px;color:#ffd166"><b>The 16 cents will plant you. Where you grow from there is your soul's choice, not your hands'.</b></p>
+  </div>
+</section>
+
 <!-- BEAUTIFUL LIFE -->
 <section class="story s-final">
   <div class="dream">
@@ -542,7 +738,7 @@
       }
     });
   },{threshold:0.15});
-  document.querySelectorAll('.card,.tl-item,.coin,.tier').forEach((el,i)=>{
+  document.querySelectorAll('.card,.tl-item,.coin,.tier,.empire-tier,.reality-check').forEach((el,i)=>{
     el.style.transitionDelay = (i%6 * 0.08)+'s';
     obs.observe(el);
   });
@@ -561,6 +757,22 @@
       });
     },{threshold:0.3});
     chartObs.observe(chart);
+  }
+
+  // Empire scale chart
+  const scaleChart = document.getElementById('scaleChart');
+  if(scaleChart){
+    const sObs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          scaleChart.querySelectorAll('.sbar').forEach((b,i)=>{
+            setTimeout(()=>{ b.style.height = b.dataset.h + '%'; }, i*200);
+          });
+          sObs.disconnect();
+        }
+      });
+    },{threshold:0.3});
+    sObs.observe(scaleChart);
   }
 
   // Progress bar
