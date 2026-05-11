@@ -166,6 +166,36 @@
   .bar span{position:absolute;top:-26px;left:50%;transform:translateX(-50%);font-weight:700;color:var(--green-d);font-size:.85rem;white-space:nowrap}
   .bar small{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);font-size:.75rem;color:#2d4a30;white-space:nowrap}
 
+  /* CRORE TIER */
+  .tier.crore{
+    border-left-color:#b8860b;
+    background:linear-gradient(135deg,#1a2a1f,#2d4a30 50%,#1f6b32);
+    color:#fff8dc;position:relative;overflow:hidden
+  }
+  .tier.crore::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 80% 20%,#ffd16633,transparent 50%),
+               radial-gradient(circle at 20% 80%,#b8860b33,transparent 50%);
+    pointer-events:none
+  }
+  .tier.crore h3{color:#ffd166;font-size:1.8rem}
+  .tier.crore .badge{background:linear-gradient(135deg,#ffd166,#b8860b);color:#1a2a1f;
+    animation:shimmer 3s infinite}
+  @keyframes shimmer{0%,100%{box-shadow:0 0 0 #ffd166}50%{box-shadow:0 0 20px #ffd166}}
+  .tier.crore .income{color:#ffd166;font-size:2.4rem;text-shadow:0 2px 8px #ffd16640}
+  .tier.crore .invest{color:#d4ecbd}
+  .tier.crore .what div{background:#ffffff15;border:1px solid #ffd16640;color:#fff8dc}
+  .tier.crore .what b{color:#ffd166}
+  .tier.crore .real{background:#ffd16620;border-left-color:#ffd166;color:#fff8dc}
+
+  .crore-math{
+    background:#ffffff10;border:2px solid #ffd16660;border-radius:14px;
+    padding:18px;margin-top:16px;font-family:'Courier New',monospace;
+    color:#ffd166;font-size:.95rem;line-height:1.9
+  }
+  .crore-math b{color:#fff}
+  .crore-math hr{border:none;border-top:1px dashed #ffd16660;margin:6px 0}
+
   /* BIRDS */
   .bird{position:absolute;width:20px;height:10px;animation:fly 18s linear infinite}
   .bird::before,.bird::after{content:"V";position:absolute;color:#1a2a1f;font-weight:700;font-size:14px}
@@ -385,14 +415,69 @@
     <div class="real">⚠️ Be careful here: at this level it's no longer "farming" — it's running a food business. Many burn out. Choose the level YOU want, not what looks impressive.</div>
   </div>
 
+  <!-- CRORE TIER -->
+  <div class="tier crore">
+    <span class="badge">🏆 TIER 6 · THE CRORE PLAN · YEAR 6–8</span>
+    <h3>👑 ₹1 Crore / year</h3>
+    <div class="income">≈ ₹8.3 Lakh / month avg · ₹25 L peak season</div>
+    <p class="invest">Total investment journey: ₹25–40 lakh (reinvested from earnings, NOT borrowed)</p>
+
+    <p style="margin-top:14px;color:#fff8dc">By now you are <b style="color:#ffd166">not a farmer — you are a food brand founder</b> who happens to farm. Five income streams compound together. Here's the exact math:</p>
+
+    <div class="crore-math">
+      <b>💰 THE ₹1 CRORE/YEAR BREAKDOWN</b><hr>
+      1. D2C Brand (oils, powders, pickles)&nbsp;&nbsp;→ <b>₹35 L/yr</b><br>
+      2. Farmstay + workshops (3 huts)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; → <b>₹18 L/yr</b><br>
+      3. Polyhouse + microgreens + mushroom&nbsp; → <b>₹15 L/yr</b><br>
+      4. YouTube/Insta ads + sponsorships&nbsp;&nbsp;&nbsp;&nbsp;→ <b>₹12 L/yr</b><br>
+      5. Online course + community (₹15k×400)→ <b>₹15 L/yr</b><br>
+      6. Aggregation from 30 local farmers&nbsp;&nbsp;&nbsp;→ <b>₹10 L/yr</b><br>
+      <hr><b>TOTAL → ₹1.05 Crore / year ✅</b>
+    </div>
+
+    <h4 style="margin-top:20px;color:#ffd166;font-size:1.1rem">🧱 What you've built by now</h4>
+    <div class="what">
+      <div><b>Your land</b>16 cents owned + 2–3 acres leased nearby (₹50k–80k/yr rent)</div>
+      <div><b>Team</b>3–5 people: 2 farm workers, 1 packaging, 1 social media, 1 delivery</div>
+      <div><b>Brand</b>FSSAI + Organic cert + trademark + 50k+ Instagram followers</div>
+      <div><b>Infrastructure</b>Polyhouse, cold room, oil expeller, dehydrator, packaging unit, 3 farmstay huts</div>
+      <div><b>Sales channels</b>Own website + Amazon + ONDC + 5 premium stores in Bengaluru/Kochi</div>
+      <div><b>Customer base</b>2,000 D2C subscribers + 300 corporate gift clients + chef contracts</div>
+    </div>
+
+    <h4 style="margin-top:20px;color:#ffd166;font-size:1.1rem">🗺️ The 8-Year Path to ₹1 Crore</h4>
+    <div class="crore-math" style="font-size:.92rem">
+      <b>Year 1:</b> ₹3 L · plant perennials, drip, caretaker<br>
+      <b>Year 2:</b> ₹8 L · move in, polyhouse, mushroom shed<br>
+      <b>Year 3:</b> ₹20 L · launch brand, FSSAI, value addition starts<br>
+      <b>Year 4:</b> ₹40 L · D2C scale, 1st farmstay hut, IG = 20k<br>
+      <b>Year 5:</b> ₹65 L · lease 2 acres, 3 huts, course launched<br>
+      <b>Year 6:</b> <b style="color:#fff">₹1 Crore</b> · all 6 streams firing 🎯<br>
+      <b>Year 7+:</b> ₹1.5–3 Cr · exports, franchise, second farm
+    </div>
+
+    <h4 style="margin-top:20px;color:#ffd166;font-size:1.1rem">⚖️ The Trade-offs (be honest with yourself)</h4>
+    <div class="what">
+      <div><b>You become a CEO</b>50% of your day is calls, packaging, content — not soil</div>
+      <div><b>Team management</b>Hiring, firing, salaries every month — stress arrives</div>
+      <div><b>Less peace</b>Tourists in your farm, deliveries, deadlines. The quiet life shrinks.</div>
+      <div><b>Tax & compliance</b>GST, income tax, FSSAI audits, labour law</div>
+      <div><b>Exit option</b>At ₹1 Cr/yr revenue, your brand is sellable for ₹3–8 Cr</div>
+      <div><b>Or: stop at ₹3L/month</b>Many choose this. ₹36L/yr + peaceful life beats ₹1Cr + burnout.</div>
+    </div>
+
+    <div class="real">🌟 Real examples doing exactly this in India: <b>Two Brothers Organic Farms</b> (₹50 Cr/yr, started 5 acres), <b>Hari Bhari Tokri</b> (₹3 Cr/yr, Pune), <b>The Farmer's Heart</b> (Kerala, ₹1.5 Cr/yr), <b>Beejom</b> (Delhi NCR). All of them started exactly where you are — with one small plot and full-time commitment.</div>
+  </div>
+
   <h2 class="s-head" style="color:#fff;text-shadow:0 2px 0 #1f6b32;margin-top:40px">📈 Your Income Growth Curve</h2>
   <div class="chart" id="chart">
-    <div class="bar" data-h="8"><span>₹25k</span><small>Yr 1</small></div>
-    <div class="bar" data-h="20"><span>₹60k</span><small>Yr 2</small></div>
-    <div class="bar" data-h="40"><span>₹1.5L</span><small>Yr 3</small></div>
-    <div class="bar" data-h="65"><span>₹3.5L</span><small>Yr 4</small></div>
-    <div class="bar" data-h="85"><span>₹6L</span><small>Yr 5</small></div>
-    <div class="bar" data-h="100"><span>₹10L+</span><small>Yr 6</small></div>
+    <div class="bar" data-h="4"><span>₹25k</span><small>Yr 1</small></div>
+    <div class="bar" data-h="10"><span>₹60k</span><small>Yr 2</small></div>
+    <div class="bar" data-h="20"><span>₹1.5L</span><small>Yr 3</small></div>
+    <div class="bar" data-h="35"><span>₹3.5L</span><small>Yr 4</small></div>
+    <div class="bar" data-h="55"><span>₹6L</span><small>Yr 5</small></div>
+    <div class="bar" data-h="80"><span>₹8.3L</span><small>Yr 6 · 1 Cr/yr</small></div>
+    <div class="bar" data-h="100" style="background:linear-gradient(to top,#b8860b,#ffd166)"><span style="color:#7a4a00">₹15L+</span><small>Yr 7+</small></div>
   </div>
 
   <h2 class="s-head" style="color:#fff;text-shadow:0 2px 0 #1f6b32;margin-top:50px">🔑 The 5 Multipliers (non-negotiable)</h2>
