@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My 16 Cent Farm — A Year to Freedom</title>
+<style>
+  :root{
+    --green:#3fa34d;
+    --green-d:#1f6b32;
+    --soil:#6b4423;
+    --sun:#ffd166;
+    --sky1:#bfe6ff;
+    --sky2:#e9f7d4;
+    --ink:#1a2a1f;
+    --card:#ffffffcc;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui,sans-serif}
+  html,body{scroll-behavior:smooth;background:var(--sky2);color:var(--ink);overflow-x:hidden}
+  /* HERO */
+  .hero{
+    height:100vh;position:relative;overflow:hidden;
+    background:linear-gradient(to bottom,var(--sky1) 0%,#ffe9a8 55%,#a8d672 56%,#6fb04a 100%);
+  }
+  .sun{
+    position:absolute;top:12%;left:8%;width:120px;height:120px;border-radius:50%;
+    background:radial-gradient(circle,#fff3b0 0%,#ffd166 60%,#ffb84d 100%);
+    box-shadow:0 0 60px #ffd166,0 0 120px #ffb84d80;
+    animation:floatSun 6s ease-in-out infinite alternate;
+  }
+  @keyframes floatSun{from{transform:translateY(0)}to{transform:translateY(-20px)}}
+  .cloud{position:absolute;background:#fff;border-radius:50px;opacity:.9;animation:drift linear infinite}
+  .cloud::before,.cloud::after{content:"";position:absolute;background:#fff;border-radius:50%}
+  .c1{width:140px;height:40px;top:18%;left:-160px;animation-duration:40s}
+  .c1::before{width:60px;height:60px;top:-25px;left:20px}
+  .c1::after{width:80px;height:80px;top:-40px;left:60px}
+  .c2{width:100px;height:30px;top:30%;left:-120px;animation-duration:55s;animation-delay:-20s}
+  .c2::before{width:50px;height:50px;top:-20px;left:15px}
+  .c2::after{width:60px;height:60px;top:-30px;left:45px}
+  @keyframes drift{to{left:110vw}}
+
+  .hill{position:absolute;bottom:35%;width:60%;height:200px;border-radius:50% 50% 0 0;background:#6fb04a}
+  .h1{left:-10%;background:#7fb959}
+  .h2{right:-10%;background:#5fa53e}
+
+  .title{
+    position:relative;z-index:5;text-align:center;padding-top:18vh;
+    color:#1a2a1f;text-shadow:0 2px 0 #ffffff80;
+  }
+  .title h1{font-size:clamp(2rem,5vw,4rem);font-weight:800;letter-spacing:-1px}
+  .title h1 span{color:var(--green-d)}
+  .title p{margin-top:12px;font-size:1.2rem;opacity:.85}
+  .scroll-hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:.9rem;color:#1a2a1fcc;animation:bounce 2s infinite}
+  @keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+
+  /* PLOT */
+  .plot-wrap{position:absolute;bottom:0;left:0;right:0;height:35%;background:linear-gradient(to bottom,#8b5a2b,#5a3a1d)}
+  .plot{
+    position:absolute;bottom:5%;left:50%;transform:translateX(-50%) perspective(600px) rotateX(55deg);
+    width:60vw;height:240px;background:repeating-linear-gradient(90deg,#7a4a23 0 30px,#6b4423 30px 60px);
+    border:4px solid #4a2f17;border-radius:8px;
+    box-shadow:0 20px 40px #00000040;
+  }
+  .crop{position:absolute;width:24px;height:30px;background:var(--green);border-radius:50% 50% 20% 20%;animation:grow 2.5s ease-out both}
+  .crop::after{content:"";position:absolute;bottom:-6px;left:50%;width:3px;height:8px;background:#3a6b22;transform:translateX(-50%)}
+  @keyframes grow{from{transform:scaleY(0);opacity:0}to{transform:scaleY(1);opacity:1}}
+
+  /* SECTIONS */
+  section.story{
+    min-height:100vh;padding:80px 6vw;position:relative;
+  }
+  .s-light{background:linear-gradient(180deg,#e9f7d4,#d4ecbd)}
+  .s-mid{background:linear-gradient(180deg,#d4ecbd,#bde0a5)}
+  .s-dark{background:linear-gradient(180deg,#bde0a5,#9fcf85)}
+  .s-gold{background:linear-gradient(180deg,#fff4d6,#ffe49a)}
+  .s-final{background:linear-gradient(180deg,#ffe49a,#8ed16f)}
+  .s-head{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--green-d);margin-bottom:8px}
+  .s-sub{color:#3a5a3a;margin-bottom:36px;max-width:700px}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{
+    background:var(--card);backdrop-filter:blur(8px);border-radius:18px;padding:22px;
+    box-shadow:0 8px 24px #1a2a1f1a;border:1px solid #ffffff80;
+    opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.2,.7,.2,1)
+  }
+  .card.in{opacity:1;transform:none}
+  .card h3{color:var(--green-d);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+  .card .emoji{font-size:1.6rem}
+  .card p{font-size:.95rem;line-height:1.55;color:#243a26}
+  .card ul{margin-top:8px;padding-left:18px;font-size:.92rem;color:#2d4a30}
+  .card li{margin:4px 0}
+
+  /* TIMELINE */
+  .timeline{position:relative;margin:40px 0;padding-left:30px;border-left:4px dashed var(--green-d)}
+  .tl-item{margin-bottom:30px;opacity:0;transform:translateX(-30px);transition:all .8s}
+  .tl-item.in{opacity:1;transform:none}
+  .tl-item::before{
+    content:"";position:absolute;left:-12px;width:20px;height:20px;border-radius:50%;
+    background:var(--sun);border:4px solid var(--green-d);margin-top:4px
+  }
+  .tl-item h4{color:var(--green-d);font-size:1.1rem;margin-bottom:4px}
+  .tl-item p{color:#2d4a30;font-size:.95rem}
+
+  /* MONEY */
+  .money-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px}
+  .coin{
+    background:linear-gradient(135deg,#ffe17a,#ffb84d);border-radius:14px;padding:18px;
+    box-shadow:0 6px 18px #b8860040;text-align:center;color:#5a3a00;font-weight:600;
+    opacity:0;transform:scale(.8);transition:all .7s
+  }
+  .coin.in{opacity:1;transform:none}
+  .coin .num{font-size:1.6rem;font-weight:800;display:block;margin:6px 0;color:#7a4a00}
+  .coin small{display:block;font-weight:400;opacity:.8;margin-top:4px}
+
+  /* GROWING SVG ANIM */
+  .grow-stage{display:flex;justify-content:center;align-items:end;gap:30px;margin:30px 0;flex-wrap:wrap}
+  .plant{width:80px;height:140px;position:relative}
+  .pot{position:absolute;bottom:0;left:10%;width:80%;height:30px;background:#a0522d;border-radius:0 0 10px 10px}
+  .stem{position:absolute;bottom:30px;left:50%;width:4px;background:#3a6b22;transform-origin:bottom;animation:stemGrow 3s ease-out infinite alternate}
+  @keyframes stemGrow{from{height:0}to{height:80px}}
+  .leaf{position:absolute;width:24px;height:14px;background:var(--green);border-radius:50% 0;transform-origin:left center;animation:leafPop 3s ease-out infinite alternate}
+  @keyframes leafPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+
+  /* FINAL */
+  .dream{text-align:center;padding:40px 0}
+  .dream h2{font-size:clamp(2rem,5vw,3.5rem);color:#fff;text-shadow:0 4px 0 #1f6b32;margin-bottom:20px}
+  .dream p{font-size:1.15rem;color:#1a2a1f;max-width:600px;margin:0 auto 30px}
+  .cta{
+    display:inline-block;padding:16px 38px;background:#1f6b32;color:#fff;border-radius:50px;
+    font-weight:700;letter-spacing:1px;box-shadow:0 8px 24px #1f6b3260;
+    animation:pulse 2s infinite
+  }
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+  /* INCOME TIERS */
+  .s-scale{background:linear-gradient(180deg,#9fcf85,#7ab85f)}
+  .tier{
+    background:linear-gradient(135deg,#fff,#f6fff0);border-radius:20px;padding:26px;
+    box-shadow:0 14px 30px #1a2a1f1f;border-left:8px solid var(--green);
+    margin-bottom:22px;opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.2,.7,.2,1);
+    position:relative;overflow:hidden
+  }
+  .tier.in{opacity:1;transform:none}
+  .tier::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,#ffe17a55,transparent 70%)}
+  .tier .badge{display:inline-block;background:var(--green-d);color:#fff;padding:4px 12px;border-radius:20px;font-size:.8rem;font-weight:700;letter-spacing:1px;margin-bottom:8px}
+  .tier h3{font-size:1.5rem;color:var(--green-d);margin-bottom:4px}
+  .tier .income{font-size:2rem;font-weight:800;color:#b8860b;margin:8px 0}
+  .tier .invest{color:#555;font-size:.9rem;margin-bottom:12px}
+  .tier .what{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:12px}
+  .tier .what div{background:#f0f8e8;padding:10px 12px;border-radius:10px;font-size:.9rem;color:#2d4a30;border:1px solid #d4ecbd}
+  .tier .what b{display:block;color:var(--green-d);margin-bottom:2px;font-size:.85rem}
+  .tier .real{margin-top:12px;font-style:italic;color:#7a4a00;font-size:.92rem;background:#fff4d6;padding:8px 12px;border-radius:8px;border-left:3px solid #ffb84d}
+
+  .tier.t5{border-left-color:#b8860b;background:linear-gradient(135deg,#fff8dc,#ffe49a)}
+  .tier.t5 h3{color:#7a4a00}
+
+  .warn{
+    background:#fff4d6;border:2px dashed #b8860b;border-radius:14px;padding:18px;
+    margin:24px 0;color:#5a3a00;font-size:.95rem;line-height:1.6
+  }
+  .warn b{color:#7a4a00}
+
+  /* CHART */
+  .chart{display:flex;align-items:flex-end;gap:12px;height:280px;margin:30px 0;padding:20px;background:#ffffff80;border-radius:18px;backdrop-filter:blur(8px)}
+  .bar{flex:1;background:linear-gradient(to top,var(--green-d),var(--sun));border-radius:8px 8px 0 0;position:relative;height:0;transition:height 1.8s cubic-bezier(.2,.7,.2,1)}
+  .bar span{position:absolute;top:-26px;left:50%;transform:translateX(-50%);font-weight:700;color:var(--green-d);font-size:.85rem;white-space:nowrap}
+  .bar small{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);font-size:.75rem;color:#2d4a30;white-space:nowrap}
+
+  /* BIRDS */
+  .bird{position:absolute;width:20px;height:10px;animation:fly 18s linear infinite}
+  .bird::before,.bird::after{content:"V";position:absolute;color:#1a2a1f;font-weight:700;font-size:14px}
+  .bird::after{left:14px}
+  @keyframes fly{
+    0%{left:-5%;top:25%}
+    50%{top:18%}
+    100%{left:105%;top:22%}
+  }
+  .b2{animation-delay:-9s;transform:scale(.7)}
+
+  /* PROGRESS BAR */
+  .progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--green),var(--sun));z-index:99;width:0%}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="sun"></div>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="bird"></div>
+  <div class="bird b2"></div>
+  <div class="hill h1"></div>
+  <div class="hill h2"></div>
+
+  <div class="title">
+    <h1>16 Cents. <span>One Dream.</span></h1>
+    <p>From part-time visitor to full-time farmer in 12 months.</p>
+  </div>
+
+  <div class="plot-wrap">
+    <div class="plot" id="plot"></div>
+  </div>
+
+  <div class="scroll-hint">↓ Scroll to begin your journey ↓</div>
+</section>
+
+<!-- REALITY -->
+<section class="story s-light">
+  <h2 class="s-head">🌱 Your Starting Point</h2>
+  <p class="s-sub">16 cents ≈ 6,500 sq ft ≈ ~0.16 acre. Small, but powerful — if you plan smart. You're away 11 weeks at a time, visiting 1 week every 3 months. So the farm must <b>survive without you</b>.</p>
+
+  <div class="cards">
+    <div class="card"><h3><span class="emoji">⏳</span> Time</h3><p>Visits: 4 per year × 1 week each = <b>~28 working days/year</b>. Year 2: full-time.</p></div>
+    <div class="card"><h3><span class="emoji">💧</span> Water</h3><p>Without automation, nothing survives 90 days. Drip + timer is non-negotiable.</p></div>
+    <div class="card"><h3><span class="emoji">👨‍🌾</span> Help</h3><p>Hire a local part-time caretaker (~₹2,000–4,000/month) for watering checks, weeding.</p></div>
+    <div class="card"><h3><span class="emoji">🎯</span> Strategy</h3><p>Year 1 = <b>plant perennials</b> that grow alone. Year 2 = <b>add intensive crops</b> when you're present.</p></div>
+  </div>
+</section>
+
+<!-- THE GOLDEN RULE -->
+<section class="story s-mid">
+  <h2 class="s-head">🪴 The Golden Rule: Plant Once, Harvest for Years</h2>
+  <p class="s-sub">For an absent farmer, <b>perennial trees & hardy plants</b> are gold. They grow slow, need little attention, and pay for decades.</p>
+
+  <div class="grow-stage">
+    <div class="plant"><div class="pot"></div><div class="stem"></div>
+      <div class="leaf" style="bottom:80px;left:50%;animation-delay:.5s"></div>
+      <div class="leaf" style="bottom:65px;left:30%;animation-delay:1s;transform:scaleX(-1)"></div>
+      <div class="leaf" style="bottom:95px;left:55%;animation-delay:1.5s"></div>
+    </div>
+    <div class="plant"><div class="pot"></div><div class="stem"></div>
+      <div class="leaf" style="bottom:70px;left:50%;animation-delay:.3s"></div>
+      <div class="leaf" style="bottom:90px;left:25%;animation-delay:.8s;transform:scaleX(-1)"></div>
+    </div>
+    <div class="plant"><div class="pot"></div><div class="stem"></div>
+      <div class="leaf" style="bottom:60px;left:50%;animation-delay:.7s"></div>
+      <div class="leaf" style="bottom:85px;left:55%;animation-delay:1.2s"></div>
+      <div class="leaf" style="bottom:100px;left:30%;animation-delay:1.7s;transform:scaleX(-1)"></div>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card"><h3><span class="emoji">🥥</span> Coconut (8–10 trees)</h3><p>Pays for 60+ years. Needs almost zero care after year 3.</p><ul><li>Spacing: 25 ft</li><li>Yield: 80–120 nuts/tree/year</li></ul></div>
+    <div class="card"><h3><span class="emoji">🥭</span> Mango / Sapota / Guava (4–6 trees)</h3><p>Drought tolerant, premium prices, no fuss once established.</p></div>
+    <div class="card"><h3><span class="emoji">🍌</span> Banana (30–40 plants)</h3><p>9 month cycle. Continuous income. Suckers replant themselves.</p></div>
+    <div class="card"><h3><span class="emoji">🌶️</span> Curry leaf / Moringa / Lemon</h3><p>"Cut & forget" plants. Sell to neighbors & local shops weekly via caretaker.</p></div>
+    <div class="card"><h3><span class="emoji">🌿</span> Turmeric / Ginger (under tree shade)</h3><p>Plant in May, harvest in Jan. Stores for months — perfect for absent farmer.</p></div>
+    <div class="card"><h3><span class="emoji">🐝</span> 2 Beehives</h3><p>Honey = ₹600–1000/kg. Bees pollinate your trees free.</p></div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="story s-dark">
+  <h2 class="s-head">🗓️ Your 12-Month Roadmap</h2>
+  <p class="s-sub">Each visit = 7 days of focused, planned work. Caretaker handles in-between.</p>
+
+  <div class="timeline">
+    <div class="tl-item"><h4>Visit 1 — Month 0 (Setup Week)</h4><p>Soil test • bore/well check • install <b>drip irrigation + automatic timer</b> • fence • dig pits for trees • plant coconut, mango, sapota, moringa.</p></div>
+    <div class="tl-item"><h4>Visit 2 — Month 3 (Plant Week)</h4><p>Plant banana suckers • turmeric & ginger rhizomes • curry leaf • mulch heavily • hire caretaker formally • install 1 CCTV + solar pump.</p></div>
+    <div class="tl-item"><h4>Visit 3 — Month 6 (Care Week)</h4><p>First weeding • organic compost • cow dung slurry • check drip lines • add 2 beehives • start a small WhatsApp group of local buyers.</p></div>
+    <div class="tl-item"><h4>Visit 4 — Month 9 (Harvest Week)</h4><p>Harvest banana, moringa, curry leaf • sell first batch locally • repair fence • prune trees • plan Year 2 layout.</p></div>
+    <div class="tl-item"><h4>Month 12 — Move In 🏡</h4><p>Build a simple farm hut. Start intensive vegetables, poultry, and direct-to-customer sales. You're now a full-time farmer.</p></div>
+  </div>
+</section>
+
+<!-- MONEY -->
+<section class="story s-gold">
+  <h2 class="s-head">💰 How You Make Money</h2>
+  <p class="s-sub">Don't sell to middlemen — they take 60%. Sell directly. Even a tiny 16 cent farm can earn ₹1.5–3 lakh/year by Year 2, growing every year.</p>
+
+  <div class="money-grid">
+    <div class="coin">🥥 Coconut<span class="num">₹15–25k</span><small>per year (year 4+)</small></div>
+    <div class="coin">🍌 Banana<span class="num">₹20–40k</span><small>per year</small></div>
+    <div class="coin">🥭 Mango/Sapota<span class="num">₹10–30k</span><small>per year (year 3+)</small></div>
+    <div class="coin">🌿 Greens & herbs<span class="num">₹2–5k</span><small>per month</small></div>
+    <div class="coin">🍯 Honey<span class="num">₹8–15k</span><small>per year</small></div>
+    <div class="coin">🐔 Country eggs (Yr 2)<span class="num">₹3–6k</span><small>per month</small></div>
+    <div class="coin">🌶️ Turmeric powder<span class="num">₹20–40k</span><small>per harvest</small></div>
+    <div class="coin">🥬 Veg basket box (Yr 2)<span class="num">₹15–30k</span><small>per month</small></div>
+  </div>
+
+  <h2 class="s-head" style="margin-top:50px">📲 Where to Sell</h2>
+  <div class="cards">
+    <div class="card"><h3><span class="emoji">🏘️</span> Local Neighbors</h3><p>Start a WhatsApp group: "Fresh from My Farm". They become loyal weekly buyers. Zero marketing cost.</p></div>
+    <div class="card"><h3><span class="emoji">🏪</span> Nearby Shops & Hotels</h3><p>Supply curry leaves, banana, eggs, greens daily. Fixed monthly income.</p></div>
+    <div class="card"><h3><span class="emoji">📦</span> Subscription Boxes</h3><p>Year 2: "₹500 weekly organic basket" — 20 customers = ₹40,000/month.</p></div>
+    <div class="card"><h3><span class="emoji">📱</span> Instagram + Reels</h3><p>Document your journey. Farmers with stories sell at 2–3× price. Free marketing forever.</p></div>
+    <div class="card"><h3><span class="emoji">🛒</span> Online platforms</h3><p>ONDC, local farmer markets, Sundays at temple/church grounds, Facebook Marketplace.</p></div>
+    <div class="card"><h3><span class="emoji">🏷️</span> Value Addition</h3><p>Banana chips, turmeric powder, dried moringa, pickles → 3× the price of raw produce.</p></div>
+  </div>
+</section>
+
+<!-- INCOME SCALE -->
+<section class="story s-scale">
+  <h2 class="s-head" style="color:#fff;text-shadow:0 2px 0 #1f6b32">🚀 Scaling to ₹1 Lakh – ₹10 Lakh / Month</h2>
+  <p class="s-sub" style="color:#1a2a1f">Raw vegetables from 16 cents <b>cannot</b> hit ₹1L+/month. But <b>high-value crops + value addition + brand + content</b> can. Here's the honest, ambitious roadmap.</p>
+
+  <div class="warn">
+    <b>⚠️ The truth:</b> Anyone promising ₹10L/month from 16 cents of raw farming is lying. To reach big numbers you must combine: (1) high-value niche crops, (2) processing/value-add, (3) personal brand & online sales, (4) eventually leasing nearby land. The path is real — but it takes 2–4 years of compounding work.
+  </div>
+
+  <!-- Tier 1 -->
+  <div class="tier">
+    <span class="badge">TIER 1 · YEAR 1–2</span>
+    <h3>🌱 ₹25,000 – ₹75,000 / month</h3>
+    <div class="income">Foundation income</div>
+    <p class="invest">Investment: ₹1.5–3 lakh · Effort: part-time + caretaker</p>
+    <div class="what">
+      <div><b>Crops</b>Banana, coconut, moringa, curry leaf, turmeric, greens</div>
+      <div><b>Side income</b>Honey, eggs, compost sales</div>
+      <div><b>Sales</b>WhatsApp neighbors, local shops, Sunday markets</div>
+      <div><b>Why this first</b>Cash flow + soil building + learning</div>
+    </div>
+    <div class="real">Real example: A Kerala farmer on 15 cents earns ~₹40k/month from banana + curry leaf + eggs delivered to 30 neighbors.</div>
+  </div>
+
+  <!-- Tier 2 -->
+  <div class="tier">
+    <span class="badge">TIER 2 · YEAR 2–3</span>
+    <h3>🌿 ₹1 Lakh – ₹2 Lakh / month</h3>
+    <div class="income">High-value niche switch</div>
+    <p class="invest">Investment: ₹3–6 lakh · Effort: full-time, you live there</p>
+    <div class="what">
+      <div><b>Polyhouse (2,000 sq ft)</b>Capsicum, cherry tomato, English cucumber — 4–6× normal price</div>
+      <div><b>Microgreens / Exotic herbs</b>Basil, rosemary, thyme → sold to restaurants & gyms ₹600–2000/kg</div>
+      <div><b>Edible flowers / Saffron pots</b>Premium chefs pay ₹500–₹3000/kg</div>
+      <div><b>Mushroom shed (oyster/milky)</b>10×10 ft room → ₹40k–80k/month, year-round</div>
+      <div><b>Quail / Country chicken farm</b>100 birds in 200 sq ft → eggs + meat ₹30–50k/month</div>
+      <div><b>Direct delivery</b>Bike + insulated box → 50 weekly subscription homes</div>
+    </div>
+    <div class="real">Real example: Mushroom + microgreens combo on 5 cents indoor space = ₹1.2L/month consistently. Many do this near Bengaluru, Kochi, Chennai.</div>
+  </div>
+
+  <!-- Tier 3 -->
+  <div class="tier">
+    <span class="badge">TIER 3 · YEAR 3–4</span>
+    <h3>🏭 ₹2 Lakh – ₹5 Lakh / month</h3>
+    <div class="income">Value addition + Brand</div>
+    <p class="invest">Investment: ₹6–15 lakh · You become a small food brand</p>
+    <div class="what">
+      <div><b>Cold-pressed coconut oil</b>₹600/L vs ₹40/coconut. Small machine = ₹80k.</div>
+      <div><b>Banana chips / Jackfruit chips</b>Branded packets ₹400–800/kg. Sell on Amazon, Flipkart, ONDC.</div>
+      <div><b>Turmeric / Moringa / Curry-leaf powder</b>"Pure single-farm" sells at ₹800–1500/kg online</div>
+      <div><b>Pickles, jams, honey blends</b>FSSAI license + nice label = 5× margin</div>
+      <div><b>Source from nearby farmers</b>You become the processor + brand for 10 neighbors</div>
+      <div><b>D2C website + Instagram</b>10k followers = ₹3L+/month easily</div>
+    </div>
+    <div class="real">Real example: "Two Brothers Organic Farms" (Maharashtra) — started 5 acres, now ₹50Cr/year selling A2 ghee, jaggery, oils online. You start tiny, same model.</div>
+  </div>
+
+  <!-- Tier 4 -->
+  <div class="tier">
+    <span class="badge">TIER 4 · YEAR 4–5</span>
+    <h3>🌐 ₹5 Lakh – ₹10 Lakh / month</h3>
+    <div class="income">Brand + Agri-Tourism + Content</div>
+    <p class="invest">You're now a creator-farmer-CEO</p>
+    <div class="what">
+      <div><b>Farmstay (2–3 huts)</b>₹3000/night × 20 bookings = ₹60k/month passive</div>
+      <div><b>Workshops & farm tours</b>"Natural farming weekend" ₹5000/person × 20 = ₹1L/event</div>
+      <div><b>YouTube / Instagram channel</b>100k subs in Malayalam/Tamil farming = ₹1–3L/month ads + sponsors</div>
+      <div><b>Lease 1–2 acres nearby</b>Same brand, 10× volume. ₹15–25k/acre/year lease.</div>
+      <div><b>Online store scale</b>Subscription boxes shipped pan-India</div>
+      <div><b>Training / Consulting</b>Teach others to do what you did = ₹50k–2L/month</div>
+    </div>
+    <div class="real">Real example: "The Farmer's Heart" (Kerala), "Hari Bhari Tokri" (Pune), KrishiJagran creators — all started ≤1 acre, now ₹6–10L/month.</div>
+  </div>
+
+  <!-- Tier 5 -->
+  <div class="tier t5">
+    <span class="badge" style="background:#7a4a00">TIER 5 · YEAR 5+</span>
+    <h3>👑 ₹10 Lakh+ / month</h3>
+    <div class="income">Empire — only if you want this life</div>
+    <p class="invest">By now you have a brand, team & supply chain</p>
+    <div class="what">
+      <div><b>Private label exports</b>Spices, dried fruit, honey to Gulf/EU — 5–10× domestic price</div>
+      <div><b>Franchise farmstay / brand</b>License your name to other small farmers</div>
+      <div><b>Aggregator model</b>Buy from 50 small farmers, process, brand, ship</div>
+      <div><b>Speciality contract farming</b>Saffron, vanilla, hops, exotic mushrooms with chef contracts</div>
+      <div><b>Course / Community</b>"Become a profitable farmer" ₹15k course × 500 students/year</div>
+      <div><b>Land appreciation</b>Your 16-cent + leased land = crore-level asset</div>
+    </div>
+    <div class="real">⚠️ Be careful here: at this level it's no longer "farming" — it's running a food business. Many burn out. Choose the level YOU want, not what looks impressive.</div>
+  </div>
+
+  <h2 class="s-head" style="color:#fff;text-shadow:0 2px 0 #1f6b32;margin-top:40px">📈 Your Income Growth Curve</h2>
+  <div class="chart" id="chart">
+    <div class="bar" data-h="8"><span>₹25k</span><small>Yr 1</small></div>
+    <div class="bar" data-h="20"><span>₹60k</span><small>Yr 2</small></div>
+    <div class="bar" data-h="40"><span>₹1.5L</span><small>Yr 3</small></div>
+    <div class="bar" data-h="65"><span>₹3.5L</span><small>Yr 4</small></div>
+    <div class="bar" data-h="85"><span>₹6L</span><small>Yr 5</small></div>
+    <div class="bar" data-h="100"><span>₹10L+</span><small>Yr 6</small></div>
+  </div>
+
+  <h2 class="s-head" style="color:#fff;text-shadow:0 2px 0 #1f6b32;margin-top:50px">🔑 The 5 Multipliers (non-negotiable)</h2>
+  <div class="cards">
+    <div class="card"><h3><span class="emoji">1️⃣</span> High-value crops</h3><p>Quit selling banana at ₹15/kg. Sell microgreens at ₹2000/kg, saffron at ₹3 lakh/kg, exotic mushrooms at ₹400/kg.</p></div>
+    <div class="card"><h3><span class="emoji">2️⃣</span> Value addition</h3><p>Raw coconut ₹15 → coconut oil ₹600. The 40× multiplier lives here. Buy a small expeller, dehydrator, sealer.</p></div>
+    <div class="card"><h3><span class="emoji">3️⃣</span> Direct-to-consumer</h3><p>Skip middlemen. Your own brand + website + WhatsApp + Instagram = keep 100% margin.</p></div>
+    <div class="card"><h3><span class="emoji">4️⃣</span> Content & story</h3><p>People pay 3× for a face + story. Post daily reels of your journey. By Year 3 your audience IS your income.</p></div>
+    <div class="card"><h3><span class="emoji">5️⃣</span> Leverage land you don't own</h3><p>Lease nearby plots ₹15–25k/acre/year. Same brand, 10× output. Most successful farmers do this by Year 4.</p></div>
+    <div class="card"><h3><span class="emoji">6️⃣</span> Reinvest, don't lifestyle-inflate</h3><p>Years 1–3: put every rupee back into infrastructure (cold storage, packaging, vehicle, polyhouse). Year 4+ you reap.</p></div>
+  </div>
+
+  <div class="warn" style="margin-top:30px">
+    <b>🎯 Honest reality check:</b><br>
+    • 90% of farmers never cross ₹50k/month because they sell raw produce to middlemen.<br>
+    • The 10% who hit ₹1L+ all do <b>value addition + own brand</b>.<br>
+    • The 1% who hit ₹10L+ add <b>content, community, or agri-tourism</b> on top.<br>
+    • Your 16 cents is the <b>seed</b>, not the limit. Reputation + skill scales infinitely.
+  </div>
+</section>
+
+<!-- BEAUTIFUL LIFE -->
+<section class="story s-final">
+  <div class="dream">
+    <h2>🌅 A Beautiful Life</h2>
+    <p>Wake to birdsong. Walk barefoot in dewy grass. Eat what you grew. Sell what's extra. Sleep under stars. No traffic, no boss, just <b>you, the soil, and freedom</b>.</p>
+
+    <div class="cards" style="text-align:left;margin-top:30px">
+      <div class="card"><h3><span class="emoji">🏡</span> Simple Hut + Rainwater tank</h3><p>₹1.5–2 lakh one-time. Solar panel = free electricity forever.</p></div>
+      <div class="card"><h3><span class="emoji">🌳</span> Food Forest layout</h3><p>Trees on borders, fruit in middle, vegetables in beds, herbs near hut, pond in corner.</p></div>
+      <div class="card"><h3><span class="emoji">🐓</span> 10 country chickens</h3><p>Eggs daily • eat pests • free fertilizer • zero feed cost if free-ranged.</p></div>
+      <div class="card"><h3><span class="emoji">🐄</span> 1 native cow (Year 2)</h3><p>Milk + dung + urine → free fertilizer = your soil becomes gold over years.</p></div>
+      <div class="card"><h3><span class="emoji">📚</span> Learn free</h3><p>YouTube: "Subhash Palekar Natural Farming", "Permaculture India", visit nearby farms before your move.</p></div>
+      <div class="card"><h3><span class="emoji">❤️</span> One golden rule</h3><p>Start small. Observe. Don't borrow money. Don't chase trends. <b>Hard work + patience = wealth that lasts.</b></p></div>
+    </div>
+
+    <div style="margin-top:50px">
+      <span class="cta">🌾 Your farm is waiting. Begin today. 🌾</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Plant crops on hero plot
+  const plot = document.getElementById('plot');
+  const colors = ['#3fa34d','#5fbf5f','#2e8b3b','#4caf50','#7cb342'];
+  for(let i=0;i<48;i++){
+    const c = document.createElement('div');
+    c.className='crop';
+    c.style.left = (5 + (i%12)*8) + '%';
+    c.style.top  = (15 + Math.floor(i/12)*22) + '%';
+    c.style.background = colors[i%colors.length];
+    c.style.animationDelay = (i*0.05)+'s';
+    plot.appendChild(c);
+  }
+
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+      }
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.card,.tl-item,.coin,.tier').forEach((el,i)=>{
+    el.style.transitionDelay = (i%6 * 0.08)+'s';
+    obs.observe(el);
+  });
+
+  // Animate chart bars when in view
+  const chart = document.getElementById('chart');
+  if(chart){
+    const chartObs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          chart.querySelectorAll('.bar').forEach((b,i)=>{
+            setTimeout(()=>{ b.style.height = b.dataset.h + '%'; }, i*150);
+          });
+          chartObs.disconnect();
+        }
+      });
+    },{threshold:0.3});
+    chartObs.observe(chart);
+  }
+
+  // Progress bar
+  const prog = document.getElementById('progress');
+  window.addEventListener('scroll',()=>{
+    const h = document.documentElement;
+    const p = (h.scrollTop/(h.scrollHeight - h.clientHeight))*100;
+    prog.style.width = p+'%';
+  });
+</script>
+</body>
+</html>
